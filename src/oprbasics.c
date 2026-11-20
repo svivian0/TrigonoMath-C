@@ -49,9 +49,32 @@ int power(double base, int exponent, double *result)
     return 1;
 }
 
+int sqrroot(double n, double *result)
+{
+    if (result == NULL || n < 0.0) {
+        return 0;
+    }
+
+    double q = n;
+    for (int i = 0; i < 100; i++) {
+
+
+        double guess = (q + n / q) / 2.0;
+
+        if (guess == q) {
+            break;
+        }
+
+        q = guess;
+
+    }
+    *result = q;
+    return 1;
+}
+
+
 int main(){
     double result;
-    power(2, 3, &result);
-    printf("%f", result);
-    return 0;
+    sqrroot(16.0, &result);
+    printf("%.2f\n", result);
 }
