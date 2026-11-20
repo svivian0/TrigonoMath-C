@@ -14,4 +14,4 @@ gcc -Wall -Wextra -std=c11 main.c -o trigonometry
 ./trigonometry
 ```
 
-O projeto está em desenvolvimento.
+
