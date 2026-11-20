@@ -1,5 +1,6 @@
 #include "oprbasics.h"
 #include <stddef.h>
+#include <stdio.h>
 
 double sum(double a, double b)
 {
@@ -34,26 +35,23 @@ int power(double base, int exponent, double *result)
 
     unsigned int remaining;
     if (exponent < 0) {
-        remaining = (unsigned int)(-(exponent + 1)) + 1u;
+        remaining = (unsigned int)(-(exponent + 1)) + 1u; // Transforma o número negatico em um sem unidade, está escrito dessa forma para permitir que o INT_MIN também consiga ser convertido
     } else {
         remaining = (unsigned int)exponent;
     }
 
     double value = 1.0;
-    double factor = base;
 
-    while (remaining > 0u) {
-        if (remaining % 2u == 1u) {
-            value *= factor;
-        }
-        factor *= factor;
-        remaining /= 2u;
-    }
+    for (int i = 0; i < exponent; i++) {
+    value *= base;}
 
-    if (exponent < 0) {
-        value = 1.0 / value;
-    }
-
-    *result = value;
+    *result= value;
     return 1;
+}
+
+int main(){
+    double result;
+    power(2, 3, &result);
+    printf("%f", result);
+    return 0;
 }
