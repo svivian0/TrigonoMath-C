@@ -1,7 +1,6 @@
-# Executables and build output
 /main
 /trigonometry
 /build/
+/src/oprbasics
 
-# Editor configuration
 /.vscode/

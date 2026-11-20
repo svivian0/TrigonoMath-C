@@ -1,25 +1,24 @@
-#include <stdio.h>
+#include "oprbasics.h"
 #include <stddef.h>
 
-double sum(double a, double b){
-
+double sum(double a, double b)
+{
     return a + b;
 }
 
-double minus(double a, double b){
-
+double subtract(double a, double b)
+{
     return a - b;
 }
 
-double multiply(double a, double b){
-
+double multiply(double a, double b)
+{
     return a * b;
 }
 
-int divide(double a, double b, double *result){
-
-    if (b == 0 || result == NULL){
-        printf("Error: Division by zero\n");
+int divide(double a, double b, double *result)
+{
+    if (result == NULL || b == 0.0) {
         return 0;
     }
 
@@ -27,16 +26,34 @@ int divide(double a, double b, double *result){
     return 1;
 }
 
-double power(double a, double b){
-    double x = 1;
-    for (int i = 0; i < b; i++){
-        x *= a;
+int power(double base, int exponent, double *result)
+{
+    if (result == NULL || (base == 0.0 && exponent < 0)) {
+        return 0;
     }
-    return x;
-}
 
-int main(){
-    double result = power(2, 3);
-    printf("%.2f", result);
-    return 0;
+    unsigned int remaining;
+    if (exponent < 0) {
+        remaining = (unsigned int)(-(exponent + 1)) + 1u;
+    } else {
+        remaining = (unsigned int)exponent;
+    }
+
+    double value = 1.0;
+    double factor = base;
+
+    while (remaining > 0u) {
+        if (remaining % 2u == 1u) {
+            value *= factor;
+        }
+        factor *= factor;
+        remaining /= 2u;
+    }
+
+    if (exponent < 0) {
+        value = 1.0 / value;
+    }
+
+    *result = value;
+    return 1;
 }
