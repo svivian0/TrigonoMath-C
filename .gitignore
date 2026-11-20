@@ -1,0 +1,7 @@
+# Executables and build output
+/main
+/trigonometry
+/build/
+
+# Editor configuration
+/.vscode/
