@@ -72,9 +72,3 @@ int sqrroot(double n, double *result)
     return 1;
 }
 
-
-int main(){
-    double result;
-    sqrroot(16.0, &result);
-    printf("%.2f\n", result);
-}

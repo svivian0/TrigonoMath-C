@@ -1,6 +1,6 @@
-#ifdef PITAGORAS_H
+#ifndef PITAGORAS_H
 #define PITAGORAS_H
 
-double pitagoras(double a, double b);
+int pitagoras(double b, double c, double *result);
 
 #endif
