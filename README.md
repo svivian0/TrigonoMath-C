@@ -1,4 +1,4 @@
-# TrygonoMath-C
+# TrigonoMath-C
 
 Calculadora desenvolvida em C para explorar operações matemáticas e funções trigonométricas sem usar a biblioteca `math.h`.
 
